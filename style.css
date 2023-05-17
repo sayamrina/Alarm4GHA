@@ -27,6 +27,36 @@ body.active {
     color: rgb(29, 29, 29);
 }
 
+/* Tem and Humadity */
+.temhum {
+    position: absolute;
+    top: 100px;
+    right: 70px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+  h1 {
+    font-family: Helvetica;
+    color: black;
+  }
+  
+  p {
+    line-height: 60px;
+    font-family: Helvetica;
+    color: #fff;
+    font-size: 50px;
+  }
+  
+  img {
+    vertical-align: middle;
+  }
+  /* end Tem and Humadity */
+
 .clock-container {
     width: auto;
     height: auto;
@@ -36,7 +66,12 @@ body.active {
     align-items: center;
     flex-direction: column;
     transition: all 0.1s ease-in-out;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
 }
+
 
 .clock {
     display: flex;
@@ -104,10 +139,12 @@ i {
 }
 
 .local-time-toggle {
-    display: flex;
-    justify-content: flex-end;
-    margin: 20px 10px;
-    margin-bottom: 10px;
+    height: 34.5vh;
+    padding: 50px;
+    overflow-y: scroll;
+    position: fixed;
+    top: 5px;
+    right: 50px;
 }
 
 .local-time-toggle-button {
@@ -196,11 +233,12 @@ i {
 /* alarm section */
 
 .add-alarm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+    height: 34.5vh;
+    padding: 50px;
+    overflow-y: scroll;
+    position: fixed;
+    top: -10%;
+    left: -120%;
 }
 
 .add-img {
@@ -430,6 +468,10 @@ ul {
     height: 34.5vh;
     padding: 20px;
     overflow-y: scroll;
+    position: absolute;
+    top: 200px;
+    left: 20px;
+   
 }
 
 .alarm-list-section::-webkit-scrollbar {
@@ -456,8 +498,8 @@ ul {
 
 list {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
 }
 
 .list span {
@@ -594,6 +636,7 @@ list {
 
 .show-notification.remove {
     animation: hide_notification 1s ease forwards;
+
 }
 
 @keyframes hide_notification {
