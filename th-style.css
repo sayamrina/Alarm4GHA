@@ -1,0 +1,31 @@
+body {
+  background-color: #ffffff;
+}
+
+.temhum {
+  display: flex;
+  justify-content: flex-end;
+  align-items: right;
+  height: 100vh;
+  padding-right: 20px;
+}
+
+.th {
+  text-align: right;
+}
+
+h1 {
+  font-family: Helvetica;
+  color: black;
+}
+
+p {
+  line-height: 60px;
+  font-family: Helvetica;
+  color: #fff;
+  font-size: 50px;
+}
+
+img {
+  vertical-align: middle;
+}
