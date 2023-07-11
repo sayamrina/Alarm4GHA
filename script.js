@@ -26,6 +26,7 @@ const snoozeText = document.querySelector('.snooze-text');
 alarmRingtone = new Audio("./ringtones/song1.mp3");
 let alarmListArr = [];
 
+// res.setHeader("Access-Control-Allow-Origin", "*");
 
 //  local storage
 
@@ -33,9 +34,21 @@ let retrieveAlarm = JSON.parse(localStorage.getItem('LocalStorage'));
 
 if (retrieveAlarm !== null) {
     alarmListArr = [...retrieveAlarm];
-    renderList();
+    fetch("http://127.0.0.1:5000/api/sensors", {
+        method: "GET",
+        body: JSON.stringify({
+        userId: userInput.value,
+        "alarm_time": time_combined
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
 }
 
+window.onload = function() {
+    callAPIAndUpdateTempHumidity();
+  };
 
 // time
 
@@ -263,6 +276,7 @@ setAmPm.onclick = function () {
 var hourInput = document.getElementById('set-hour');
 var minuteInput = document.getElementById('set-minute');
 var secInput = document.getElementById('set-sec');
+var userInput = document.getElementById('set-user-id')
 
 
 var ampmInput = 'AM';
@@ -289,7 +303,23 @@ setAlarmButton.onclick = function () {
             id: Date.now()
         };
 
+        const time_combined= hourInput.value + minuteInput.value + secInput.value + ampmInput
+        console.log("timee combined")
+        console.log(time_combined)
+        console.log(userInput)
+        console.log(userInput.value)
+
         alarmListArr.push(alarmTime);
+        fetch("http://127.0.0.1:5000/api/sensors", {
+            method: "POST",
+            body: JSON.stringify({
+            userId: userInput.value,
+            "alarm_time": time_combined
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8"
+            }
+          });
         console.log(alarmTime);
         renderList();
 
@@ -299,7 +329,21 @@ setAlarmButton.onclick = function () {
     }
 }
 
-
+//humidity stuff
+function callAPIAndUpdateTempHumidity() {
+    fetch('http://localhost:5000/api/temperature')  // Replace with your API endpoint
+      .then(response => response.json())
+      .then(data => {
+        // Update the HTML element
+        const temperature = document.getElementById('temperature1');
+        temperature.innerHTML = data.temperature;
+        const humidity = document.getElementById('humidity1');
+        humidity.innerHTML = data.humidity;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }
 
 // alarm list section
 
