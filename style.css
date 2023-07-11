@@ -51,6 +51,24 @@ body.active {
     color: #fff;
     font-size: 50px;
   }
+
+  select{
+    padding: 4px 28px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    /* background-color: #917d07; */
+    background-color: #f45c48;
+    color: rgb(231, 230, 230);
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 2px 8px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
   img {
     vertical-align: middle;
